@@ -1,7 +1,7 @@
 {
   "name": "@hawezo/text",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^25.2.1",
