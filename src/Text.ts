@@ -28,6 +28,20 @@ export class Text {
   }
 
   /**
+   * Generates a random alpha-numeric string.
+   */
+  static random(length: number = 16): Text {
+    const charset =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    const random = Array.apply(this, Array(length))
+      .map(() => charset.charAt(Math.floor(Math.random() * charset.length)))
+      .join('');
+
+    return new Text(random);
+  }
+
+  /**
    * Converts accepted inputs into workable fragments.
    */
   private fragmentify(input: Input[]): Fragment[] {
