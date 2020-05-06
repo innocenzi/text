@@ -206,6 +206,23 @@ export class Text {
     return Text.make(this.toString().substr(pos + 1));
   }
 
+  /**
+   * Return the remainder of a string after the last occurrence of a given value.
+   */
+  afterLast(search: string): Text {
+    if (0 === search.length) {
+      return this;
+    }
+
+    const pos = this.toString().lastIndexOf(search);
+
+    if (-1 === pos) {
+      return this;
+    }
+
+    return Text.make(this.toString().substr(pos + 1));
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods

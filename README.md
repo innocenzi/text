@@ -195,6 +195,22 @@ const text = Text.make('Hello')
 console.log(text.toString()); // lo
 ```
 
+
+### `afterLast`
+
+Return the remainder of a string after the last occurrence of a given value.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text';
+
+const text = Text.make('Hello')
+    .afterLast('l');
+
+console.log(text.toString()); // o
+```
+
 ## Notes
 
 - Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.

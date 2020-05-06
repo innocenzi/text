@@ -80,6 +80,11 @@ const tests = {
     expected: 'lo',
     builder: () => Text.make('hello').after('l'),
   },
+
+  'returns the content after the last occurrence': {
+    expected: 'o',
+    builder: () => Text.make('hello').afterLast('l'),
+  },
 };
 
 describe('Text Builder', () => {
