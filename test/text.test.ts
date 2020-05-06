@@ -65,6 +65,11 @@ const tests = {
     expected: 'aaa',
     builder: () => Text.make().times('a', 3),
   },
+
+  'returns the content before the first occurrence': {
+    expected: 't',
+    builder: () => Text.make('test').before('e'),
+  },
 };
 
 describe('Text Builder', () => {

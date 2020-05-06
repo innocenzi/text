@@ -148,6 +148,22 @@ console.log(text.toString()); // Helloooo
 ```
 
 
+### `before`
+
+Gets the portion of a string before the first occurrence of the given value.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text';
+
+const text = Text.make('Hello')
+    .before('l');
+
+console.log(text.toString()); // He
+```
+
+
 ## Notes
 
 - Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.

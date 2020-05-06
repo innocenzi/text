@@ -157,6 +157,23 @@ export class Text {
 
   /*
   |--------------------------------------------------------------------------
+  | Manipulations
+  |--------------------------------------------------------------------------
+  */
+
+  /**
+   * Gets the portion of a string before the first occurrence of the given value.
+   */
+  before(search: string): Text {
+    if (0 === search.length) {
+      return this;
+    }
+
+    return Text.make(this.toString().split(search)[0]);
+  }
+
+  /*
+  |--------------------------------------------------------------------------
   | Original string methods
   |--------------------------------------------------------------------------
   */
