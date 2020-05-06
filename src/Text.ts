@@ -85,6 +85,13 @@ export class Text {
     return this.prepend(...this.fragmentify(input), '\n');
   }
 
+  /**
+   * Appends the given lines to the
+   */
+  appendLines(...input: Input[]): this {
+    return this.append(...input.map(line => `\n${line}`));
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization

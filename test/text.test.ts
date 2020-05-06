@@ -30,6 +30,11 @@ const tests = {
     expected: 'Line 2\nLine 1',
     builder: () => Text.make('Line 1').prependLine('Line 2'),
   },
+
+  'can be appended multiple lines to': {
+    expected: 'Line 1\nLine 2\nLine 3',
+    builder: () => Text.make('Line 1').appendLines('Line 2', 'Line 3'),
+  },
 };
 
 describe('Text Builder', () => {
