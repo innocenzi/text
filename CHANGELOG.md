@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/hawezo/text/compare/v0.0.3...v0.0.4) (2020-05-06)
+
+
+### Features
+
+* Added `after` ([f8197c1](https://github.com/hawezo/text/commit/f8197c1e668bdb1bdb4fe441dd28f619c416aab5))
+* Added `afterLast` ([9fb5768](https://github.com/hawezo/text/commit/9fb57685871d90626aa346f03f2807ddcd33ce5a))
+* Added `before` ([9f3e517](https://github.com/hawezo/text/commit/9f3e5171288b187fe3dcfddf717e884f9ed6d532))
+* Added `beforeLast` ([5453ef3](https://github.com/hawezo/text/commit/5453ef3f693e029ed6709bba092fa1b13cb30d5d))
+* Added `between` with alias `inside` ([02adeed](https://github.com/hawezo/text/commit/02adeedffda45e11caec3cc994c5d38b271d03d5))
+
 ### [0.0.3](https://github.com/hawezo/text/compare/v0.0.2...v0.0.3) (2020-05-06)
 
 
