@@ -237,6 +237,13 @@ export class Text {
     return this.between(from, to);
   }
 
+  /**
+   * Cap a string with a single instance of a given value.
+   */
+  finish(value: string): Text {
+    return this.endsWith(value) ? this : this.append(value);
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods

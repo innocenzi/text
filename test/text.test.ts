@@ -141,6 +141,17 @@ const tests = {
       builder: () => Text.make('hello').between('p', 'e'),
     },
   ],
+
+  'finishes a string with the given value': [
+    {
+      expected: 'hello',
+      builder: () => Text.make('hell').finish('o'),
+    },
+    {
+      expected: 'hello',
+      builder: () => Text.make('hello').finish('o'),
+    },
+  ],
 };
 
 describe('Text Builder', () => {
