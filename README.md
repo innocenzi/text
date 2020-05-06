@@ -211,6 +211,25 @@ const text = Text.make('Hello')
 console.log(text.toString()); // o
 ```
 
+
+### `between`
+
+Get the portion of a string between two given values.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text';
+
+const text = Text.make('Hello')
+    .between('h', 'o);
+
+console.log(text.toString()); // ell
+```
+
+**Alias**: `inside`
+
+
 ## Notes
 
 - Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.

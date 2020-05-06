@@ -223,6 +223,20 @@ export class Text {
     return Text.make(this.toString().substr(pos + 1));
   }
 
+  /**
+   * Get the portion of a string between two given values.
+   */
+  between(from: string, to: string): Text {
+    return this.after(from).beforeLast(to);
+  }
+
+  /**
+   * Get the portion of a string between two given values.
+   */
+  inside(from: string, to: string): Text {
+    return this.between(from, to);
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods
