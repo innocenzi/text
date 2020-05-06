@@ -30,7 +30,7 @@ $ yarn add @hawezo/text
 The library only exposes a `Text` object, which is the string builder. You can either instantiate it normally, or call the static `make` method.
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 // This is the same
 const text = new Text('some optional text');
@@ -48,7 +48,7 @@ Appends the given input to the text.
 **Example**
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('Hello')
     .append(' there!');
@@ -65,7 +65,7 @@ Prepends the given input to the text.
 **Example**
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('there!')
     .prepend('Hello ');
@@ -81,7 +81,7 @@ Appends the given input to the text, as a new line.
 **Example**
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('Hello')
     .line('there!');
@@ -101,7 +101,7 @@ Adds a space.
 **Example**
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('Hello')
     .space() // you can specify the amount of spaces
@@ -118,7 +118,7 @@ Adds a new line.
 **Example**
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('Hello')
     .nl() // you can specify the amount of new lines
@@ -139,7 +139,7 @@ Adds a string the amount of times specified.
 **Example**
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('Hello')
     .times('o', 3);
@@ -153,7 +153,7 @@ console.log(text.toString()); // Helloooo
 - Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('Hello ')
     .trimRight()
@@ -166,7 +166,7 @@ console.log(text.toString()); // Hellothere!
 
 
 ```js
-import { Text } from '@hawezo/text`;
+import { Text } from '@hawezo/text';
 
 const text = Text.make('thirty-one')
     .toUpperCase();
