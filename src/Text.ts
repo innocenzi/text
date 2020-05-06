@@ -254,6 +254,20 @@ export class Text {
     );
   }
 
+  /**
+   * Converts all the alphabetic characters in a string to lowercase.
+   */
+  lower(): Text {
+    return this.toLowerCase();
+  }
+
+  /**
+   * Converts all the alphabetic characters in a string to uppercase.
+   */
+  upper(): Text {
+    return this.toUpperCase();
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods
