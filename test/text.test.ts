@@ -50,6 +50,11 @@ const tests = {
     expected: 'Line 1\nLine 2\nLine 3',
     builder: () => Text.make('Line 3').prependLines('Line 1', 'Line 2'),
   },
+
+  'can be concatenated': {
+    expected: 'Hello there',
+    builder: () => Text.make('Hello').concat(' there'),
+  },
 };
 
 describe('Text Builder', () => {

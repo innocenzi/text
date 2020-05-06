@@ -36,7 +36,7 @@ export class Text {
 
   /*
   |--------------------------------------------------------------------------
-  | Fluent methods
+  | Fluent expansion methods
   |--------------------------------------------------------------------------
   */
 
@@ -60,6 +60,13 @@ export class Text {
     this._fragments.push(...this.fragmentify(input));
 
     return this;
+  }
+
+  /**
+   * Returns a Text that contains the concatenation of the given string.
+   */
+  concat(...input: Input[]): this {
+    return this.append(...input);
   }
 
   /**
@@ -119,6 +126,12 @@ export class Text {
 
     return this.prepend(...lines);
   }
+
+  /*
+  |--------------------------------------------------------------------------
+  | String manipulation methods
+  |--------------------------------------------------------------------------
+  */
 
   /*
   |--------------------------------------------------------------------------
