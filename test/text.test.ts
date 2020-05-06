@@ -10,6 +10,11 @@ const tests = {
     expected: 'Hello !',
     builder: () => Text.make('Hello').space().append('!'),
   },
+
+  'can be appended a line to': {
+    expected: 'Line 1\nLine 2',
+    builder: () => Text.make('Line 1').appendLine('Line 2'),
+  },
 };
 
 describe('Text Builder', () => {

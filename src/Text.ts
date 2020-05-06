@@ -62,6 +62,13 @@ export class Text {
     return this;
   }
 
+  /**
+   * Appends the given input to the builder.
+   */
+  appendLine(...input: Input[]): this {
+    return this.append('\n', ...this.fragmentify(input));
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization
