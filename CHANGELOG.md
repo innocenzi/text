@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/hawezo/text/compare/v0.0.4...v0.0.5) (2020-05-06)
+
+
+### Features
+
+* Added `finish` ([8af8a91](https://github.com/hawezo/text/commit/8af8a91c2fd1c626be31d242a132ea6c8ae5c1ab))
+* Added `isUuid` ([63057c6](https://github.com/hawezo/text/commit/63057c61e49757837003329a1a5fcfc93a6a6183))
+* Added `random` static call ([e25e013](https://github.com/hawezo/text/commit/e25e0136f67b992acb43ba6fba722241546db759))
+* Aliased `lower`/`upper` methods ([d3e2b3b](https://github.com/hawezo/text/commit/d3e2b3b3cb947eec3e4c2357a09852e8bba771b6))
+
 ### [0.0.4](https://github.com/hawezo/text/compare/v0.0.3...v0.0.4) (2020-05-06)
 
 
