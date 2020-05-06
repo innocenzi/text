@@ -51,7 +51,7 @@ Appends the given input to the text.
 import { Text } from '@hawezo/text`;
 
 const text = Text.make('Hello')
-    .append(' there!);
+    .append(' there!');
 
 console.log(text.toString()); // Hello there!
 ```
@@ -84,7 +84,7 @@ Appends the given input to the text, as a new line.
 import { Text } from '@hawezo/text`;
 
 const text = Text.make('Hello')
-    .line('there!);
+    .line('there!');
 
 console.log(text.toString()); 
 // Hello
@@ -104,11 +104,49 @@ Adds a space.
 import { Text } from '@hawezo/text`;
 
 const text = Text.make('Hello')
-    .space()
-    .line('there!);
+    .space() // you can specify the amount of spaces
+    .line('there!');
 
 console.log(text.toString()); // Hello there!
 ```
+
+
+### `nl`
+
+Adds a new line.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text`;
+
+const text = Text.make('Hello')
+    .nl() // you can specify the amount of new lines
+    .line('there!);
+
+console.log(text.toString()); 
+// Hello
+// there!
+```
+
+**Alias**: `newLine`
+
+
+### `times`
+
+Adds a string the amount of times specified.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text`;
+
+const text = Text.make('Hello')
+    .times('o', 3);
+
+console.log(text.toString()); // Helloooo
+```
+
 
 ## Notes
 
