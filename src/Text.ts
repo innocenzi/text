@@ -172,6 +172,23 @@ export class Text {
     return Text.make(this.toString().split(search)[0]);
   }
 
+  /**
+   * Gets the portion of a string before the last occurrence of the given value.
+   */
+  beforeLast(search: string): Text {
+    if (0 === search.length) {
+      return this;
+    }
+
+    const pos = this.toString().lastIndexOf(search);
+
+    if (-1 === pos) {
+      return this;
+    }
+
+    return Text.make(this.toString().substr(0, pos));
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods

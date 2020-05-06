@@ -164,6 +164,22 @@ console.log(text.toString()); // He
 ```
 
 
+### `beforeLast`
+
+Gets the portion of a string before the last occurrence of the given value.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text';
+
+const text = Text.make('Hello')
+    .beforeLast('l');
+
+console.log(text.toString()); // Hel
+```
+
+
 ## Notes
 
 - Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.

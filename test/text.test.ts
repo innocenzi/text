@@ -70,6 +70,11 @@ const tests = {
     expected: 't',
     builder: () => Text.make('test').before('e'),
   },
+
+  'returns the content before the last occurrence': {
+    expected: 'hel',
+    builder: () => Text.make('hello').beforeLast('l'),
+  },
 };
 
 describe('Text Builder', () => {
