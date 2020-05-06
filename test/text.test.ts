@@ -6,11 +6,6 @@ const tests = {
     builder: () => Text.make('Hello there!'),
   },
 
-  'can be added spaces to': {
-    expected: 'Hello !',
-    builder: () => Text.make('Hello').space().append('!'),
-  },
-
   'can be appended text to': {
     expected: 'Hello!',
     builder: () => Text.make('Hel').append('lo!'),
@@ -54,6 +49,21 @@ const tests = {
   'can be concatenated': {
     expected: 'Hello there',
     builder: () => Text.make('Hello').concat(' there'),
+  },
+
+  'can be added spaces to': {
+    expected: 'Hello !',
+    builder: () => Text.make('Hello').space().append('!'),
+  },
+
+  'can be added new lines to': {
+    expected: 'Line 1\nLine 2',
+    builder: () => Text.make('Line 1').nl().append('Line 2'),
+  },
+
+  'can be added the specified amount of characters': {
+    expected: 'aaa',
+    builder: () => Text.make().times('a', 3),
   },
 };
 

@@ -41,13 +41,41 @@ export class Text {
   */
 
   /**
-   * Adds a space character.
+   * Appends a space character.
    *
    * @param count Amount of spaces to add.
    */
   space(count: number = 1): this {
+    return this.times(' ', count);
+  }
+
+  /**
+   * Appends a new line character.
+   *
+   * @param count Amount of spaces to add.
+   */
+  newLine(count: number = 1): this {
+    return this.times('\n', count);
+  }
+
+  /**
+   * Appends a new line character.
+   *
+   * @param count Amount of spaces to add.
+   */
+  nl(count: number = 1): this {
+    return this.times('\n', count);
+  }
+
+  /**
+   * Appends an input as much times as specified.
+   *
+   * @param input The given input.
+   * @param count Times to append.
+   */
+  times(input: Input, count: number = 1): this {
     for (let i = 0; i < Math.max(count, 1); i++) {
-      this._fragments.push(' ');
+      this._fragments.push(input.toString());
     }
 
     return this;
