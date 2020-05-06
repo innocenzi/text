@@ -16,6 +16,11 @@ const tests = {
     builder: () => Text.make('Hel').append('lo!'),
   },
 
+  'can be prepended text to': {
+    expected: 'Hello world',
+    builder: () => Text.make('world').prepend('Hello '),
+  },
+
   'can be appended a line to': {
     expected: 'Line 1\nLine 2',
     builder: () => Text.make('Line 1').appendLine('Line 2'),

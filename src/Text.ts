@@ -69,6 +69,15 @@ export class Text {
     return this.append('\n', ...this.fragmentify(input));
   }
 
+  /**
+   * Prepends the given input to the builder.
+   */
+  prepend(...input: Input[]): this {
+    this._fragments = this.fragmentify(input).concat(this._fragments);
+
+    return this;
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization
