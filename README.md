@@ -256,6 +256,8 @@ const text = Text.make('thirty-one')
 console.log(`John is ${text} years old`); // John is THIRTY-ONE years old
 ```
 
+- Some methods are undocumented. Use your IDE to find them.
+
 
 ## Contributions
 
