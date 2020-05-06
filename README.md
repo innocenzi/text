@@ -180,6 +180,21 @@ console.log(text.toString()); // Hel
 ```
 
 
+### `after`
+
+Return the remainder of a string after the first occurrence of a given value.
+
+**Example**
+
+```js
+import { Text } from '@hawezo/text';
+
+const text = Text.make('Hello')
+    .after('l');
+
+console.log(text.toString()); // lo
+```
+
 ## Notes
 
 - Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.

@@ -189,6 +189,23 @@ export class Text {
     return Text.make(this.toString().substr(0, pos));
   }
 
+  /**
+   * Return the remainder of a string after the first occurrence of a given value.
+   */
+  after(search: string): Text {
+    if (0 === search.length) {
+      return this;
+    }
+
+    const pos = this.toString().indexOf(search);
+
+    if (-1 === pos) {
+      return this;
+    }
+
+    return Text.make(this.toString().substr(pos + 1));
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods

@@ -75,6 +75,11 @@ const tests = {
     expected: 'hel',
     builder: () => Text.make('hello').beforeLast('l'),
   },
+
+  'returns the content after the first occurrence': {
+    expected: 'lo',
+    builder: () => Text.make('hello').after('l'),
+  },
 };
 
 describe('Text Builder', () => {
