@@ -92,6 +92,27 @@ export class Text {
     return this.append(...input.map(line => `\n${line}`));
   }
 
+  /**
+   * Prepends the given lines to the
+   */
+  prependLines(...input: Input[]): this {
+    const lines = input.map(line => `\n${line}`);
+
+    // If there is at least one line, we remove the line return
+    // character we just added on the first, to avoid the resulted
+    // string to start by a new line.
+    if (lines.length > 0) {
+      lines[0] = lines[0].slice(1);
+    }
+
+    // If we already have a string, we add a new line before it as well
+    if (this._fragments.length > 0) {
+      this._fragments[0] = '\n' + this._fragments[0];
+    }
+
+    return this.prepend(...lines);
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization

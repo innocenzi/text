@@ -35,6 +35,21 @@ const tests = {
     expected: 'Line 1\nLine 2\nLine 3',
     builder: () => Text.make('Line 1').appendLines('Line 2', 'Line 3'),
   },
+
+  'adds a line return between the existing text and the prepended lines': {
+    expected: 'Line 1\nLine 2',
+    builder: () => Text.make('Line 2').prependLines('Line 1'),
+  },
+
+  'does not add a line return when prepending a line on an empty text': {
+    expected: 'Line 1',
+    builder: () => Text.make().prependLines('Line 1'),
+  },
+
+  'can be prepended multiple lines to': {
+    expected: 'Line 1\nLine 2\nLine 3',
+    builder: () => Text.make('Line 3').prependLines('Line 1', 'Line 2'),
+  },
 };
 
 describe('Text Builder', () => {
