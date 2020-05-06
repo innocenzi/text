@@ -78,6 +78,13 @@ export class Text {
     return this;
   }
 
+  /**
+   * Prepends the given input to the builder.
+   */
+  prependLine(...input: Input[]): this {
+    return this.prepend(...this.fragmentify(input), '\n');
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization

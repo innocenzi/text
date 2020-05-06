@@ -25,6 +25,11 @@ const tests = {
     expected: 'Line 1\nLine 2',
     builder: () => Text.make('Line 1').appendLine('Line 2'),
   },
+
+  'can be prepended a line to': {
+    expected: 'Line 2\nLine 1',
+    builder: () => Text.make('Line 1').prependLine('Line 2'),
+  },
 };
 
 describe('Text Builder', () => {
