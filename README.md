@@ -1,4 +1,4 @@
-# Text
+# Text ![CI](https://github.com/hawezo/text/workflows/CI/badge.svg)
 
 A very simple string builder. I sometimes found myself writting code like the following examples:
 
