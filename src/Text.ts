@@ -70,6 +70,13 @@ export class Text {
   }
 
   /**
+   * Appends the given input to the builder.
+   */
+  line(...input: Input[]): this {
+    return this.appendLine(...input);
+  }
+
+  /**
    * Prepends the given input to the builder.
    */
   prepend(...input: Input[]): this {
