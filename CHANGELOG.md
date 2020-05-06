@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/hawezo/text/compare/v0.0.1...v0.0.2) (2020-05-06)
+
+
+### Bug Fixes
+
+* Updated distribution contents ([8723ba4](https://github.com/hawezo/text/commit/8723ba481187b8b1cd432ce29d51269d1277fad5))
+
 ### 0.0.1 (2020-05-06)
 
 
