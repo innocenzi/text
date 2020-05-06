@@ -7,13 +7,8 @@ const tests = {
   },
 
   'can be added spaces to': {
-    expected: 'Hello there! General Kenobi',
-    builder: () =>
-      Text.make('Hello')
-        .space()
-        .append('there!')
-        .space()
-        .append('General Kenobi'),
+    expected: 'Hello !',
+    builder: () => Text.make('Hello').space().append('!'),
   },
 };
 
