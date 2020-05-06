@@ -17,6 +17,6 @@
     "test:watch": "jest --watchAll",
     "watch": "yarn run test:watch",
     "build": "rm -rf dist && tsc",
-    "release": "standard-version"
+    "release": "yarn build && standard-version"
   }
 }
