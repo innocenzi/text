@@ -1,6 +1,10 @@
 import { Text } from '../src';
 
-const tests = {
+interface TextTests {
+  [name: string]: Array<{ expected: string; builder: () => any }>;
+}
+
+const tests: TextTests = {
   'can be stringified': [
     {
       expected: 'Hello there!',
@@ -150,6 +154,21 @@ const tests = {
     {
       expected: 'hello',
       builder: () => Text.make('hello').finish('o'),
+    },
+  ],
+
+  'determines if a string is an UUID': [
+    {
+      expected: 'false',
+      builder: () => Text.make('hello').isUuid(),
+    },
+    {
+      expected: 'true',
+      builder: () => Text.make('52dc5778-1288-400d-b400-821b7beabd92').isUuid(), // uuid v4
+    },
+    {
+      expected: 'true',
+      builder: () => Text.make('0630c1d6-8fab-11ea-bc55-0242ac130003').isUuid(), // uuid v1
     },
   ],
 };

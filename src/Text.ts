@@ -244,6 +244,16 @@ export class Text {
     return this.endsWith(value) ? this : this.append(value);
   }
 
+  /**
+   * Determines if a given string is a valid UUID.
+   */
+  isUuid(): Boolean {
+    return (
+      null !==
+      this.match(/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/i)
+    );
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Original string methods
@@ -380,10 +390,8 @@ export class Text {
    *
    * @param matcher An object that supports being matched against.
    */
-  match(matcher: {
-    [Symbol.match](string: string): RegExpMatchArray | null;
-  }): RegExpMatchArray | null {
-    return this.toString().match(matcher);
+  match(regexp: string | RegExp): RegExpMatchArray | null {
+    return this.toString().match(regexp);
   }
 
   /**
