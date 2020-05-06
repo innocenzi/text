@@ -11,6 +11,11 @@ const tests = {
     builder: () => Text.make('Hello').space().append('!'),
   },
 
+  'can be appended text to': {
+    expected: 'Hello!',
+    builder: () => Text.make('Hel').append('lo!'),
+  },
+
   'can be appended a line to': {
     expected: 'Line 1\nLine 2',
     builder: () => Text.make('Line 1').appendLine('Line 2'),
