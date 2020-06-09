@@ -1,7 +1,11 @@
 import { Text } from '../src';
 
 interface TextTests {
-  [name: string]: Array<{ expected: string | string[]; builder: () => any }>;
+  [name: string]: Array<{
+    expected: string | string[];
+    builder: () => any;
+    raw?: boolean;
+  }>;
 }
 
 const tests: TextTests = {
@@ -185,16 +189,22 @@ const tests: TextTests = {
       expected: 'a',
       builder: () => Text.make('cat').charAt(1),
     },
+    {
+      expected: 'Hewwo',
+      builder: () => Text.make('Hello').replace(/l/g, 'w'),
+    },
   ],
 
   'extracts words from string': [
     {
-      expected: ['hello', 'world'].toString(),
+      expected: ['hello', 'world'],
       builder: () => Text.make('hello world').words(),
+      raw: true,
     },
     {
-      expected: ['hello', '&', 'world'].toString(),
+      expected: ['hello', '&', 'world'],
       builder: () => Text.make('hello & world').words(/[^, ]+/g),
+      raw: true,
     },
   ],
 
@@ -340,8 +350,8 @@ const tests: TextTests = {
 describe('Text Builder', () => {
   Object.entries(tests).forEach(([title, tests]) => {
     test(title, () => {
-      tests.forEach(({ builder, expected }) => {
-        expect(builder().toString()).toBe(expected);
+      tests.forEach(({ builder, expected, raw }) => {
+        expect(raw ? builder() : builder().toString()).toStrictEqual(expected);
       });
     });
   });
