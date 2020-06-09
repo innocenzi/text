@@ -71,7 +71,7 @@ Text.random(8);
 
 ## Public
 
-There are a lot of methods available, each of them are documented with examples. Until I find a way to generate a nice documentation website based on the TSDoc comments, you will have to refer to them in the source. Though, for convenience, I added their names below.
+There are a lot of methods available, each of them are documented with examples. Until I find a way to generate a nice documentation website based on the TSDoc comments, you will have to refer to them in the [source](src/Text.ts). Though, for convenience, I added their names below.
 
 ### Builder methods
 
