@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/innocenzi/text/compare/v0.0.5...v0.0.6) (2020-06-09)
+
+
+### Features
+
+* add case methods ([67bc360](https://github.com/innocenzi/text/commit/67bc36097f1f20fc9e54cb9d0856bfd00fce831d))
+
+
+### Bug Fixes
+
+* add `concat` back ([4d78bf9](https://github.com/innocenzi/text/commit/4d78bf917fbce3cccbd79c7e803a8102bba11966))
+
 ### [0.0.5](https://github.com/hawezo/text/compare/v0.0.4...v0.0.5) (2020-05-06)
 
 
