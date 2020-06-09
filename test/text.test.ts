@@ -171,6 +171,21 @@ const tests: TextTests = {
       builder: () => Text.make('0630c1d6-8fab-11ea-bc55-0242ac130003').isUuid(), // uuid v1
     },
   ],
+
+  'extends actual string methods': [
+    {
+      expected: 'hello',
+      builder: () => Text.make('  hello').trimLeft(),
+    },
+    {
+      expected: '111',
+      builder: () => Text.make('1').repeat(3),
+    },
+    {
+      expected: 'a',
+      builder: () => Text.make('cat').charAt(1),
+    },
+  ],
 };
 
 describe('Text Builder', () => {
