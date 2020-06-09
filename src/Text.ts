@@ -238,7 +238,7 @@ export class Text extends String {
       return this;
     }
 
-    return Text.make(this.toString().substr(pos + 1));
+    return Text.make(this.toString().substr(pos + search.length));
   }
 
   /**
@@ -252,7 +252,7 @@ export class Text extends String {
    * Get the portion of a string between two given values.
    */
   inside(from: string, to: string): Text {
-    return this.between(from, to);
+    return this.afterLast(from).before(to);
   }
 
   /**

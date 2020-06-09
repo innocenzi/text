@@ -137,6 +137,10 @@ const tests: TextTests = {
       expected: 'ell',
       builder: () => Text.make('hello').between('h', 'o'),
     },
+    {
+      expected: 'abbc',
+      builder: () => Text.make('aabbcc').between('a', 'c'),
+    },
   ],
 
   'returns the same when calling `between` if one value is empty': [
@@ -151,6 +155,17 @@ const tests: TextTests = {
     {
       expected: 'h',
       builder: () => Text.make('hello').between('p', 'e'),
+    },
+  ],
+
+  'returns the content inside two values': [
+    {
+      expected: 'bb',
+      builder: () => Text.make('aabbcc').inside('a', 'c'),
+    },
+    {
+      expected: 'hello world',
+      builder: () => Text.make('{{hello world}}').inside('{', '}'),
     },
   ],
 
