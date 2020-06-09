@@ -221,7 +221,7 @@ export class Text extends String {
       return this;
     }
 
-    return Text.make(this.toString().substr(pos + 1));
+    return Text.make(this.toString().substr(pos + search.length));
   }
 
   /**

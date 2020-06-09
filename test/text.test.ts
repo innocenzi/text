@@ -119,6 +119,10 @@ const tests: TextTests = {
       expected: 'lo',
       builder: () => Text.make('hello').after('l'),
     },
+    {
+      expected: ' world',
+      builder: () => Text.make('hello world').after('hello'),
+    },
   ],
 
   'returns the content after the last occurrence': [
