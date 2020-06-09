@@ -119,6 +119,10 @@ const tests: TextTests = {
       expected: 'lo',
       builder: () => Text.make('hello').after('l'),
     },
+    {
+      expected: ' world',
+      builder: () => Text.make('hello world').after('hello'),
+    },
   ],
 
   'returns the content after the last occurrence': [
@@ -132,6 +136,10 @@ const tests: TextTests = {
     {
       expected: 'ell',
       builder: () => Text.make('hello').between('h', 'o'),
+    },
+    {
+      expected: 'abbc',
+      builder: () => Text.make('aabbcc').between('a', 'c'),
     },
   ],
 
@@ -147,6 +155,17 @@ const tests: TextTests = {
     {
       expected: 'h',
       builder: () => Text.make('hello').between('p', 'e'),
+    },
+  ],
+
+  'returns the content inside two values': [
+    {
+      expected: 'bb',
+      builder: () => Text.make('aabbcc').inside('a', 'c'),
+    },
+    {
+      expected: 'hello world',
+      builder: () => Text.make('{{hello world}}').inside('{', '}'),
     },
   ],
 
