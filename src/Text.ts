@@ -107,12 +107,13 @@ export class Text extends String {
     return this;
   }
 
-  // /**
-  //  * Returns a Text that contains the concatenation of the given string.
-  //  */
-  // concat(...input: Input[]): this {
-  //   return this.append(...input);
-  // }
+  /**
+   * Returns a Text that contains the concatenation of the given string.
+   */
+  // @ts-ignore This if fine.
+  concat(...input: Input[]): this {
+    return this.append(...input);
+  }
 
   /**
    * Appends the given input to the builder.
@@ -386,3 +387,6 @@ export class Text extends String {
     return this.join();
   }
 }
+
+const t = new Text('ze"z');
+Text.make('').concat(t);
