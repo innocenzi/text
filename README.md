@@ -52,7 +52,7 @@ const text = new Text('some optional text');
 
 ## Static
 
-## `make`
+### `make`
 
 Creates a new instance of the builder. The builder can be used to fluently chain methods, in order to pleasantly manipulate text.
 
@@ -60,7 +60,7 @@ Creates a new instance of the builder. The builder can be used to fluently chain
 Text.make('hello world');
 ```
 
-## `random`
+### `random`
 
 Generates a random alpha-numeric string.
 
@@ -69,29 +69,67 @@ Text.random(8);
 // => AM5Ysvv8
 ```
 
-## Notes
+## Public
 
-- Other methods from the base `String` object are available. For the ones that return `string`, an instance of `Text` is returned instead.
+There are a lot of methods available, each of them are documented with examples. Until I find a way to generate a nice documentation website based on the TSDoc comments, you will have to refer to them in the source. Though, for convenience, I added their names below.
 
-```js
-import { Text } from '@innocenzi/text';
+### Builder methods
 
-const text = Text.make('Hello ').trimRight().line('there!');
+- space
+- newLine
+- times
+- append
+- concat
+- appendLine
+- line
+- prepend
+- prependLine
+- appendLines
+- prependLines
 
-console.log(text.toString()); // Hellothere!
-```
+### Manipulation methods
 
-- Since `toString` is implemented, you can use `Text` into template strings.
+- before
+- beforeLast
+- after
+- afterLast
+- between
+- inside
+- finish
+- lower
+- lowerFirst
+- upper
+- upperFirst
+- words
+- kebabCase
+- snakeCase
+- camelCase
+- pascalCase
+- case
+- isUuid
 
-```js
-import { Text } from '@innocenzi/text';
+### Original string methods
 
-const text = Text.make('thirty-one').toUpperCase();
-
-console.log(`John is ${text} years old`); // John is THIRTY-ONE years old
-```
-
-- Some methods are undocumented. Use your IDE to find them.
+- trimLeft
+- trimRight
+- toLowerCase
+- toUpperCase
+- substr
+- toLocaleLowerCase
+- toLocaleUpperCase
+- normalize
+- split
+- slice
+- repeat
+- padStart
+- padEnd
+- replace
+- charAt
+- charCodeAt
+- match
+- includes
+- startsWith
+- endsWith
 
 ## Contributions
 
