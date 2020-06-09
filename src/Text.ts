@@ -1,3 +1,5 @@
+import words from './case/words';
+
 export type Input = string | number | Text;
 export type Fragment = string;
 
@@ -282,6 +284,81 @@ export class Text extends String {
     return Text.make(this.toUpperCase());
   }
 
+  /**
+   * Change the first character to upper case.
+   */
+  upperFirst(): Text {
+    return Text.make(this.toString().charAt(0).toUpperCase() + this.toString().slice(1));
+  }
+
+  /**
+   * Change the first character to lower case.
+   */
+  lowerFirst(): Text {
+    return Text.make(this.toString().charAt(0).toLowerCase() + this.toString().slice(1));
+  }
+
+  /**
+   * Splits `string` into an array of its words.
+   *
+   * words('fred, barney, & pebbles')
+   * // => ['fred', 'barney', 'pebbles']
+   *
+   * words('fred, barney, & pebbles', /[^, ]+/g)
+   * // => ['fred', 'barney', '&', 'pebbles']
+   */
+  words(pattern?: RegExp | string): string[] {
+    return words(this.toString(), pattern);
+  }
+
+  /**
+   * Converts the text to `kebab-case`.
+   */
+  kebabCase(): Text {
+    return this.case(
+      (result, word, index) => result + (index ? '-' : '') + word.toLowerCase()
+    );
+  }
+
+  /**
+   * Converts the text to `snake_case`.
+   */
+  snakeCase(): Text {
+    return this.case(
+      (result, word, index) => result + (index ? '_' : '') + word.toLowerCase()
+    );
+  }
+
+  /**
+   * Converts the text to `camelCase`.
+   */
+  camelCase(): Text {
+    return this.case((result, word, index) => {
+      word = word.toLowerCase();
+      return result + (index ? Text.make(word).upperFirst() : word).toString();
+    });
+  }
+
+  /**
+   * Converts the text to `pascalCase`.
+   */
+  pascalCase(): Text {
+    return this.case((result, word) => {
+      word = word.toLowerCase();
+
+      return result + Text.make(word).upperFirst().str();
+    });
+  }
+
+  /**
+   * Converts the text to a case determined by the given reducer.
+   * The reducer parameters are the current string, the current word and the
+   * current word's index.
+   */
+  case(reducer: (result: string, word: string, index: number) => string): Text {
+    return Text.make(words(this.replace(/['\u2019]/g, '')).reduce(reducer, ''));
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization
@@ -293,6 +370,13 @@ export class Text extends String {
    */
   join(separator: string = ''): string {
     return this._fragments.join(separator);
+  }
+
+  /**
+   * Shortcut for `.toString()`.
+   */
+  str(): string {
+    return this.toString();
   }
 
   /**

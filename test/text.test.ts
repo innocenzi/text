@@ -1,7 +1,7 @@
 import { Text } from '../src';
 
 interface TextTests {
-  [name: string]: Array<{ expected: string; builder: () => any }>;
+  [name: string]: Array<{ expected: string | string[]; builder: () => any }>;
 }
 
 const tests: TextTests = {
@@ -184,6 +184,155 @@ const tests: TextTests = {
     {
       expected: 'a',
       builder: () => Text.make('cat').charAt(1),
+    },
+  ],
+
+  'extracts words from string': [
+    {
+      expected: ['hello', 'world'].toString(),
+      builder: () => Text.make('hello world').words(),
+    },
+    {
+      expected: ['hello', '&', 'world'].toString(),
+      builder: () => Text.make('hello & world').words(/[^, ]+/g),
+    },
+  ],
+
+  'changes the case of the first character to upper': [
+    {
+      expected: 'Hello',
+      builder: () => Text.make('hello').upperFirst(),
+    },
+    {
+      expected: 'Hello',
+      builder: () => Text.make('Hello').upperFirst(),
+    },
+    {
+      expected: ' hello',
+      builder: () => Text.make(' hello').upperFirst(),
+    },
+  ],
+
+  'changes the case of the first character to lower': [
+    {
+      expected: 'hello',
+      builder: () => Text.make('hello').lowerFirst(),
+    },
+    {
+      expected: 'hello',
+      builder: () => Text.make('Hello').lowerFirst(),
+    },
+    {
+      expected: ' hello',
+      builder: () => Text.make(' hello').lowerFirst(),
+    },
+  ],
+
+  'converts to kebab-case': [
+    {
+      expected: 'hello-world',
+      builder: () => Text.make('Hello World').kebabCase(),
+    },
+    {
+      expected: 'hello-world',
+      builder: () => Text.make('Hello, World!').kebabCase(),
+    },
+    {
+      expected: 'hello-world',
+      builder: () => Text.make('   Hello, World!   ').kebabCase(),
+    },
+    {
+      expected: 'hello-world',
+      builder: () => Text.make('hello_world').kebabCase(),
+    },
+    {
+      expected: 'hello-world',
+      builder: () => Text.make('HelloWorld').kebabCase(),
+    },
+    {
+      expected: 'hello-world',
+      builder: () => Text.make('hello-world').kebabCase(),
+    },
+  ],
+
+  'converts to camelCase': [
+    {
+      expected: 'helloWorld',
+      builder: () => Text.make('Hello World').camelCase(),
+    },
+    {
+      expected: 'helloWorld',
+      builder: () => Text.make('Hello, World!').camelCase(),
+    },
+    {
+      expected: 'helloWorld',
+      builder: () => Text.make('   Hello, World!   ').camelCase(),
+    },
+    {
+      expected: 'helloWorld',
+      builder: () => Text.make('hello_world').camelCase(),
+    },
+    {
+      expected: 'helloWorld',
+      builder: () => Text.make('HelloWorld').camelCase(),
+    },
+    {
+      expected: 'helloWorld',
+      builder: () => Text.make('hello-world').camelCase(),
+    },
+  ],
+
+  'converts to snake_case': [
+    {
+      expected: 'hello_world',
+      builder: () => Text.make('Hello World').snakeCase(),
+    },
+    {
+      expected: 'hello_world',
+      builder: () => Text.make('Hello, World!').snakeCase(),
+    },
+    {
+      expected: 'hello_world',
+      builder: () => Text.make('   Hello, World!   ').snakeCase(),
+    },
+    {
+      expected: 'hello_world',
+      builder: () => Text.make('hello_world').snakeCase(),
+    },
+    {
+      expected: 'hello_world',
+      builder: () => Text.make('HelloWorld').snakeCase(),
+    },
+    {
+      expected: 'hello_world',
+      builder: () => Text.make('hello-world').snakeCase(),
+    },
+  ],
+
+  'converts to PascalCase': [
+    {
+      expected: 'HelloWorld',
+      builder: () => Text.make('Hello World').pascalCase(),
+    },
+    {
+      expected: 'HelloWorld',
+      builder: () => Text.make('Hello, World!').pascalCase(),
+    },
+    {
+      expected: 'HelloWorld',
+      builder: () => Text.make('   Hello, World!   ').pascalCase(),
+    },
+    {
+      expected: 'HelloWorld',
+      builder: () => Text.make('hello_world').pascalCase(),
+    },
+    {
+      expected: 'HelloWorld',
+      builder: () => Text.make('HelloWorld').pascalCase(),
+    },
+    {
+      expected: 'HelloWorld',
+      builder: () => Text.make('hello-world').pascalCase(),
     },
   ],
 };
