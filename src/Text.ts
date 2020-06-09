@@ -4,14 +4,14 @@ export type Input = string | number | Text;
 export type Fragment = string;
 
 /**
- * Builds a string, fluently.
+ * Fluently build or manipulate strings.
  */
-export class Text extends String {
+export class Text {
   private _fragments: Fragment[];
 
   /*
   |--------------------------------------------------------------------------
-  | Constructors
+  | Constructor
   |--------------------------------------------------------------------------
   */
 
@@ -19,10 +19,14 @@ export class Text extends String {
    * Creates a new instance of the builder.
    */
   constructor(...fragments: Input[]) {
-    super('');
-
     this._fragments = this.fragmentify(fragments);
   }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Static
+  |--------------------------------------------------------------------------
+  */
 
   /**
    * Creates a new instance of the builder.
@@ -76,7 +80,7 @@ export class Text extends String {
    *		.append('] 50%');
    * // [=====     ] 50%
    */
-  space(count: number = 1): this {
+  space(count: number = 1): Text {
     return this.times(' ', count);
   }
 
@@ -91,7 +95,7 @@ export class Text extends String {
    *		.append('world');
    * // Hello\nworld
    */
-  newLine(count: number = 1): this {
+  newLine(count: number = 1): Text {
     return this.times('\n', count);
   }
 
@@ -106,7 +110,7 @@ export class Text extends String {
    *		.append('world');
    * // Hello\nworld
    */
-  nl(count: number = 1): this {
+  nl(count: number = 1): Text {
     return this.times('\n', count);
   }
 
@@ -122,7 +126,7 @@ export class Text extends String {
    *		.append('o');
    * // Hellllllllo
    */
-  times(input: Input, count: number = 1): this {
+  times(input: Input, count: number = 1): Text {
     for (let i = 0; i < Math.max(count, 1); i++) {
       this._fragments.push(input.toString());
     }
@@ -138,7 +142,7 @@ export class Text extends String {
    *		.append('world')
    * // Helloworld
    */
-  append(...input: Input[]): this {
+  append(...input: Input[]): Text {
     this._fragments.push(...this.fragmentify(input));
 
     return this;
@@ -153,7 +157,7 @@ export class Text extends String {
    * // helloworld
    */
   // @ts-ignore This if fine.
-  concat(...input: Input[]): this {
+  concat(...input: Input[]): Text {
     return this.append(...input);
   }
 
@@ -165,7 +169,7 @@ export class Text extends String {
    *		.appendLine('world');
    * // hello\nworld
    */
-  appendLine(...input: Input[]): this {
+  appendLine(...input: Input[]): Text {
     return this.append('\n', ...this.fragmentify(input));
   }
 
@@ -177,7 +181,7 @@ export class Text extends String {
    *		.line('world');
    * // hello\nworld
    */
-  line(...input: Input[]): this {
+  line(...input: Input[]): Text {
     return this.appendLine(...input);
   }
 
@@ -189,7 +193,7 @@ export class Text extends String {
    *		.prepend('hello');
    * // helloworld
    */
-  prepend(...input: Input[]): this {
+  prepend(...input: Input[]): Text {
     this._fragments = this.fragmentify(input).concat(this._fragments);
 
     return this;
@@ -203,7 +207,7 @@ export class Text extends String {
    *		.prependLine('hello');
    * // hello\nworld
    */
-  prependLine(...input: Input[]): this {
+  prependLine(...input: Input[]): Text {
     return this.prepend(...this.fragmentify(input), '\n');
   }
 
@@ -215,7 +219,7 @@ export class Text extends String {
    *		.appendLines('hello', 'world');
    * // \nhello\nworld
    */
-  appendLines(...input: Input[]): this {
+  appendLines(...input: Input[]): Text {
     return this.append(...input.map(line => `\n${line}`));
   }
 
@@ -227,7 +231,7 @@ export class Text extends String {
    *		.prependLines('hello', 'world');
    * // hello\nworld
    */
-  prependLines(...input: Input[]): this {
+  prependLines(...input: Input[]): Text {
     const lines = input.map(line => `\n${line}`);
 
     // If there is at least one line, we remove the line return
@@ -528,7 +532,193 @@ export class Text extends String {
    * // HeLlO WoRlD
    */
   case(reducer: (result: string, word: string, index: number) => string): Text {
-    return Text.make(words(this.replace(/['\u2019]/g, '')).reduce(reducer, ''));
+    return Text.make(
+      this.replace(/['\u2019]/g, '')
+        .words()
+        .reduce(reducer, '')
+    );
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Original string methods
+  |--------------------------------------------------------------------------
+  */
+
+  /**
+   * Removes whitespace from the left end of a string.
+   */
+  trimLeft(): Text {
+    return Text.make(this.toString().trimLeft());
+  }
+
+  /**
+   * Removes whitespace from the right end of a string.
+   */
+  trimRight(): Text {
+    return Text.make(this.toString().trimRight());
+  }
+
+  /**
+   * Converts all the alphabetic characters in a string to lowercase.
+   */
+  toLowerCase(): Text {
+    return Text.make(this.toString().toLowerCase());
+  }
+
+  /**
+   * Converts all the alphabetic characters in a string to uppercase.
+   */
+  toUpperCase(): Text {
+    return Text.make(this.toString().toUpperCase());
+  }
+
+  /**
+   * Gets a substring beginning at the specified location and having the specified length.
+   *
+   * @param from The starting position of the desired substring. The index of the first character in the string is zero.
+   * @param length The number of characters to include in the returned substring.
+   */
+  substr(from: number, length?: number | undefined): Text {
+    return Text.make(this.toString().substr(from, length));
+  }
+
+  /**
+   * Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.
+   */
+  toLocaleLowerCase(locales?: string | string[] | undefined): Text {
+    return Text.make(this.toString().toLocaleLowerCase(locales));
+  }
+
+  /**
+   * Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.
+   */
+  toLocaleUpperCase(locales?: string | string[] | undefined): Text {
+    return Text.make(this.toString().toLocaleUpperCase(locales));
+  }
+
+  /**
+   * Returns the String value result of normalizing the string into the normalization form named by form as specified in Unicode Standard Annex #15, Unicode Normalization Forms.
+   *
+   * @param form Applicable values: "NFC", "NFD", "NFKC", or "NFKD", If not specified default is "NFC".
+   */
+  normalize(form?: 'NFC' | 'NFD' | 'NFKC' | 'NFKD'): Text {
+    return Text.make(this.toString().normalize(form));
+  }
+
+  /**
+   * Split a string into substrings using the specified separator and return them as an array.
+   *
+   * @param separator A string that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.
+   * @param limit A value used to limit the number of elements returned in the array.
+   */
+  split(separator: string | RegExp, limit?: number | undefined): string[] {
+    return this.toString().split(separator, limit);
+  }
+
+  /**
+   * Returns a section of a string.
+   *
+   * @param start The index to the beginning of the specified portion of stringObj.
+   * @param end The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end. If this value is not specified, the substring continues to the end of stringObj.
+   */
+  slice(start?: number | undefined, end?: number | undefined): Text {
+    return Text.make(this.toString().slice(start, end));
+  }
+
+  /**
+   * Returns a String value that is made from count copies appended together. If count is 0, the empty string is returned.
+   *
+   * @param count Number of copies to append.
+   */
+  repeat(count: number): Text {
+    return Text.make(this.toString().repeat(count));
+  }
+
+  /**
+   * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length. The padding is applied from the start (left) of the current string.
+   *
+   * @param maxLength The length of the resulting string once the current string has been padded. If this parameter is smaller than the current string's length, the current string will be returned as it is.
+   * @param fillString The string to pad the current string with. If this string is too long, it will be truncated and the left-most part will be applied. The default value for this parameter is " " (U+0020).
+   */
+  padStart(maxLength: number, fillString?: string | undefined): Text {
+    return Text.make(this.toString().padStart(maxLength, fillString));
+  }
+
+  /**
+   * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length. The padding is applied from the end (right) of the current string.
+   *
+   * @param maxLength The length of the resulting string once the current string has been padded. If this parameter is smaller than the current string's length, the current string will be returned as it is.
+   * @param fillString The string to pad the current string with. If this string is too long, it will be truncated and the left-most part will be applied. The default value for this parameter is " " (U+0020).
+   */
+  padEnd(maxLength: number, fillString?: string | undefined): Text {
+    return Text.make(this.toString().padEnd(maxLength, fillString));
+  }
+
+  /**
+   * Replaces text in a string, using an object that supports replacement within a string.
+   *
+   * @param searchValue A object can search for and replace matches within a string.
+   * @param replaceValue A string containing the text to replace for every successful match of searchValue in this string.
+   */
+  replace(
+    searchValue: {
+      [Symbol.replace](string: string, replaceValue: string): string;
+    },
+    replaceValue: string
+  ): Text {
+    return Text.make(this.toString().replace(searchValue, replaceValue));
+  }
+
+  /**
+   * Returns the character at the specified index.
+   *
+   * @param position The zero-based index of the desired character.
+   */
+  charAt(position: number): Text {
+    return Text.make(this.toString().charAt(position));
+  }
+
+  /**
+   * Returns the Unicode value of the character at the specified location.
+   *
+   * @param index The zero-based index of the desired character. If there is no character at the specified index, NaN is returned.
+   */
+  charCodeAt(index: number): number {
+    return this.toString().charCodeAt(index);
+  }
+
+  /**
+   * Matches a string an object that supports being matched against, and returns an array containing the results of that search.
+   *
+   * @param matcher An object that supports being matched against.
+   */
+  match(regexp: string | RegExp): RegExpMatchArray | null {
+    return this.toString().match(regexp);
+  }
+
+  /**
+   * Returns true if searchString appears as a substring of the result of converting this object to a String, at one or more positions that are greater than or equal to position; otherwise, returns false.
+   *
+   * @param searchString search string
+   * @param position If position is undefined, 0 is assumed, so as to search all of the String.
+   */
+  includes(searchString: string, position?: number | undefined): Boolean {
+    return this.toString().includes(searchString, position);
+  }
+
+  /**
+   * Returns true if the sequence of elements of searchString converted to a String is the same as the corresponding elements of this object (converted to a String) starting at position. Otherwise returns false.
+   */
+  startsWith(searchString: string, position?: number | undefined): Boolean {
+    return this.toString().startsWith(searchString, position);
+  }
+
+  /**
+   * Returns true if the sequence of elements of searchString converted to a String is the same as the corresponding elements of this object (converted to a String) starting at endPosition – length(this). Otherwise returns false.
+   */
+  endsWith(searchString: string, endPosition?: number | undefined): Boolean {
+    return this.toString().endsWith(searchString, endPosition);
   }
 
   /*
