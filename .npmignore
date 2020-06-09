@@ -1,5 +1,9 @@
-src
-test
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
+src/
+test/
 .editorconfig
 .prettierrc
 *.md
