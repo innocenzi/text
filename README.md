@@ -39,13 +39,13 @@ const text = Text.make(`Report for ${projectName}:`)
   .line('Lines: ', lines);
 
 // Or just this
-const text = Text.make().template(`
-    Report for ${projectName}:
-    [${'='.repeat(progress)}${' '.repeat(rest)}] (${percent}%)
+const text = Text.template(`
+  Report for ${projectName}:
+  [${'='.repeat(progress)}${' '.repeat(rest)}] (${percent}%)
 
-    Time spent: ${timeSpent}
-    Lines: ${lines}
-  `);
+  Time spent: ${timeSpent}
+  Lines: ${lines}
+`);
 ```
 
 Additionally, the library offer a few more useful string manipulation methods, inspired by the [Str](https://laravel.com/docs/7.x/helpers) utilities of the Laravel framework.
