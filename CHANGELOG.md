@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/innocenzi/text/compare/v1.3.0...v1.4.0) (2020-06-10)
+
+
+### Features
+
+* Added `start` method ([6ca7905](https://github.com/innocenzi/text/commit/6ca7905b9d377e73da7df80d3b438255133a97b6))
+
 ## [1.3.0](https://github.com/innocenzi/text/compare/v1.2.0...v1.3.0) (2020-06-10)
 
 
