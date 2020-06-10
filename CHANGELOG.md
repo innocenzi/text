@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/innocenzi/text/compare/v1.1.0...v1.2.0) (2020-06-10)
+
+
+### Features
+
+* Added conditional append methods ([231d9b3](https://github.com/innocenzi/text/commit/231d9b34e0b737eda2f5ba51a566f355e0e8f081))
+
 ## [1.1.0](https://github.com/innocenzi/text/compare/v1.0.2...v1.1.0) (2020-06-10)
 
 
