@@ -846,6 +846,13 @@ export class Text {
     return this.toString().endsWith(searchString, endPosition);
   }
 
+  /**
+   * Returns the length of the text.
+   */
+  get length(): number {
+    return this.toString().length;
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Serialization

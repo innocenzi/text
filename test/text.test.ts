@@ -2,7 +2,7 @@ import { Text } from '../src';
 
 interface TextTests {
   [name: string]: Array<{
-    expected: string | string[];
+    expected: number | string | string[];
     builder: () => any;
     raw?: boolean;
   }>;
@@ -436,6 +436,19 @@ const tests: TextTests = {
 
         return text;
       },
+    },
+  ],
+
+  'gets the correct length of the text': [
+    {
+      expected: 5,
+      builder: () => Text.make('hello').length,
+      raw: true,
+    },
+    {
+      expected: 0,
+      builder: () => Text.make().length,
+      raw: true,
     },
   ],
 };
