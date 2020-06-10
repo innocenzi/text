@@ -136,6 +136,8 @@ There are a lot of methods available, each of them are documented with examples.
 - pascalCase
 - case
 - isUuid
+- map
+- each
 
 ### Original string methods
 
@@ -159,6 +161,7 @@ There are a lot of methods available, each of them are documented with examples.
 - includes
 - startsWith
 - endsWith
+- length
 
 ## Contributions
 
