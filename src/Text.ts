@@ -149,6 +149,25 @@ export class Text {
   }
 
   /**
+   * Appends the given input to the builder if the condition is met.
+   *
+   * @param condition Condition to pass.
+   * @param input Input.
+   *
+   * @example
+   * const shouldAppend = !!Math.floor((Math.random() * 2));
+   * Text.make()
+   * 	.appendIf(shouldAppend, 'Hello world')
+   */
+  appendIf(condition: boolean, ...input: Input[]): Text {
+    if (condition) {
+      return this.append(...input);
+    }
+
+    return this;
+  }
+
+  /**
    * Concatenates the given inputs to the current text.
    *
    * @example
@@ -174,7 +193,7 @@ export class Text {
   }
 
   /**
-   * Appends the given input to the builder.
+   * Appends the given input after a new line to the builder.
    *
    * @example
    * This.make('hello')
@@ -183,6 +202,25 @@ export class Text {
    */
   line(...input: Input[]): Text {
     return this.appendLine(...input);
+  }
+
+  /**
+   * Appends the given input after a new line to the builder if the condition is met.
+   *
+   * @param condition Condition to pass.
+   * @param input Input.
+   *
+   * @example
+   * const shouldAppend = !!Math.floor((Math.random() * 2));
+   * Text.make()
+   * 	.lineIf(shouldAppend, 'Hello world')
+   */
+  lineIf(condition: boolean, ...input: Input[]): Text {
+    if (condition) {
+      return this.line(...input);
+    }
+
+    return this;
   }
 
   /**
@@ -195,6 +233,25 @@ export class Text {
    */
   prepend(...input: Input[]): Text {
     this._fragments = this.fragmentify(input).concat(this._fragments);
+
+    return this;
+  }
+
+  /**
+   * Prepends the given input after a new line to the builder if the condition is met.
+   *
+   * @param condition Condition to pass.
+   * @param input Input.
+   *
+   * @example
+   * const shouldAppend = !!Math.floor((Math.random() * 2));
+   * Text.make()
+   * 	.prependIf(shouldAppend, 'Hello world')
+   */
+  prependIf(condition: boolean, ...input: Input[]): Text {
+    if (condition) {
+      return this.prepend(...input);
+    }
 
     return this;
   }

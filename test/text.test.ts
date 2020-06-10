@@ -377,6 +377,33 @@ const tests: TextTests = {
 				`),
     },
   ],
+
+  'transforms text if conditiojns are met': [
+    {
+      expected: '',
+      builder: () => Text.make().appendIf(false, 'Hello world'),
+    },
+    {
+      expected: 'Hello world',
+      builder: () => Text.make().appendIf(true, 'Hello world'),
+    },
+    {
+      expected: '',
+      builder: () => Text.make().lineIf(false, 'Hello world'),
+    },
+    {
+      expected: '\nHello world',
+      builder: () => Text.make().lineIf(true, 'Hello world'),
+    },
+    {
+      expected: '',
+      builder: () => Text.make().prependIf(false, 'Hello world'),
+    },
+    {
+      expected: 'Hello world',
+      builder: () => Text.make().prependIf(true, 'Hello world'),
+    },
+  ],
 };
 
 describe('Text Builder', () => {

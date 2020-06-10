@@ -104,10 +104,13 @@ There are a lot of methods available, each of them are documented with examples.
 - newLine
 - times
 - append
+- appendIf
 - concat
 - appendLine
 - line
+- lineIf
 - prepend
+- prependIf
 - prependLine
 - appendLines
 - prependLines
