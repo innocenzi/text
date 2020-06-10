@@ -364,6 +364,19 @@ const tests: TextTests = {
       builder: () => Text.make('hello-world').pascalCase(),
     },
   ],
+
+  'trims lines from template literals': [
+    {
+      expected: 'Hello\nfrom\ntemplate\nliterals',
+      builder: () =>
+        Text.make().trimLines(`
+					Hello
+					from
+					template
+					literals
+				`),
+    },
+  ],
 };
 
 describe('Text Builder', () => {

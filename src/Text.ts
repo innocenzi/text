@@ -249,6 +249,36 @@ export class Text {
     return this.prepend(...lines);
   }
 
+  /**
+   * Appends the given input to the builder, triming each of its lines.
+   *
+   * @example
+   * Text.make()
+   * 	.template(`
+   * 		Hello
+   * 		from
+   * 		template
+   * 		literals
+   * 	`)
+   * // Hello\nfrom\ntemplate\nliterals
+   */
+  trimLines(input: string): Text {
+    return this.append(
+      input
+        .trim()
+        .split('\n')
+        .map(line => line.trim())
+        .join('\n')
+    );
+  }
+
+  /**
+   * Alias for `trimLines`.
+   */
+  template(input: string): Text {
+    return this.trimLines(input);
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Manipulations

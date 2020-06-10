@@ -19,26 +19,37 @@ const text = `
 
   Time spent: ${timeSpent}
   Lines: ${lines}
-`.trim();
+`;
 ```
 
-I wish there was a better way to build strings, but there is no clean method. That is why I made this fluent string builder, which I will update according to my needs. With `Text`, you can do this:
+The issue with this will be the broken indentation and the spaces at the start and the end. I wish there was a better way to build strings, but there is no clean method.
+
+That is why I made this fluent string builder, which I will update according to my needs. With `Text`, you can do this:
 
 ```js
+// Do this
 const text = Text.make(`Report for ${projectName}:`)
   .append('[')
   .append('='.repeat(progress))
   .append(' '.repeat(rest))
   .append(']')
   .append('(', percent, '%)')
-  // Or just
-  // .line(`[${'='.repeat(progress)}${' '.repeat(rest)}] (${percent}%)`)
   .line()
   .line('Time spent: ', timeSpent)
   .line('Lines: ', lines);
+
+// Or just this
+const text = Text.make()
+  .template(`
+    Report for ${projectName}:
+    [${'='.repeat(progress)}${' '.repeat(rest)}] (${percent}%)
+
+    Time spent: ${timeSpent}
+    Lines: ${lines}
+  `);
 ```
 
-Some might say it's too verbose, but I prefer it this way, because it's more readable. And the template strings version has indentation and space issues. Additionally, the library offer a few more useful string manipulation methods, inspired by the [Str](https://laravel.com/docs/7.x/helpers) utilities of the Laravel framework.
+Additionally, the library offer a few more useful string manipulation methods, inspired by the [Str](https://laravel.com/docs/7.x/helpers) utilities of the Laravel framework.
 
 # Usage
 
@@ -100,6 +111,7 @@ There are a lot of methods available, each of them are documented with examples.
 - prependLine
 - appendLines
 - prependLines
+- trimLines
 
 ### Manipulation methods
 
