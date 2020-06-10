@@ -125,6 +125,7 @@ There are a lot of methods available, each of them are documented with examples.
 - between
 - inside
 - finish
+- start
 - lower
 - lowerFirst
 - upper

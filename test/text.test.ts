@@ -180,6 +180,17 @@ const tests: TextTests = {
     },
   ],
 
+  'starts a string with the given value': [
+    {
+      expected: '/hello/',
+      builder: () => Text.make('hello/').start('/'),
+    },
+    {
+      expected: '/hello/',
+      builder: () => Text.make('/hello/').start('/'),
+    },
+  ],
+
   'determines if a string is an UUID': [
     {
       expected: 'false',

@@ -466,6 +466,22 @@ export class Text {
   }
 
   /**
+   * Adds a single instance of the given value to the start of text, if it does not already start with it.
+   *
+   * @example
+   * Text.make('hello/world')
+   * 	.start('/')
+   * // /hello/world
+   *
+   * Text.make('/hello/world')
+   * 	.start('/')
+   * // /hello/world
+   */
+  start(value: Input): Text {
+    return this.startsWith(value.toString()) ? this : this.prepend(value);
+  }
+
+  /**
    * Determines if a given string is a valid UUID.
    *
    * @example
