@@ -551,6 +551,7 @@ export class Text {
    * @example
    * Text.make('Hello')
    * 	.map(char => char.upper())
+   * // HELLO
    */
   map(callback: (value: Text, index: number, array: Input[]) => Text): Text {
     return Text.make(
@@ -561,6 +562,23 @@ export class Text {
         })
         .join('')
     );
+  }
+
+  /**
+   * Performs the specified action for each character of the text.
+   *
+   * @param callback A function that accepts up to three arguments.
+   *
+   * @example
+   */
+  each(callback: (value: Text, index: number, array: Input[]) => void): Text {
+    this.toString()
+      .split('')
+      .forEach((value, index, array) => {
+        callback(Text.make(value), index, array);
+      });
+
+    return this;
   }
 
   /**

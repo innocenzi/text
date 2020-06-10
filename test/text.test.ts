@@ -414,6 +414,30 @@ const tests: TextTests = {
         }),
     },
   ],
+
+  'loops through text without modifying it': [
+    {
+      expected: 'Hello',
+      builder: () => Text.make('Hello').each(char => char.upper()),
+    },
+  ],
+
+  'loops through text and calls the callback': [
+    {
+      expected: 'Hello',
+      builder: () => {
+        const text = Text.make('Hello');
+        const callback = jest.fn(c => c.upper());
+
+        text.each(callback);
+
+        expect(callback.mock.calls.length).toBe(5);
+        expect(callback.mock.results.map(r => r.value.toString()).join('')).toBe('HELLO');
+
+        return text;
+      },
+    },
+  ],
 };
 
 describe('Text Builder', () => {
