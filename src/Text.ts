@@ -32,10 +32,33 @@ export class Text {
    * Creates a new instance of the builder.
    *
    * @example
-   * Text.make('hello world'); // hello world
+   * Text.make('hello world');
+   * // hello world
    */
   static make(...fragments: Input[]): Text {
     return new Text(...fragments);
+  }
+
+  /**
+   * Creates a new instance of the builder from a multiline template string.
+   *
+   * @param input A multiline string.
+   *
+   * @example
+   * Text.template(`
+   * 	Hello
+   * 	from
+   * 	template
+   * 	literals
+   * `)
+   *
+   * // Hello
+   * // from
+   * // template
+   * // literals
+   */
+  static template(input: string): Text {
+    return new Text().trimLines(input);
   }
 
   /**

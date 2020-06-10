@@ -84,6 +84,19 @@ Creates a new instance of the builder. The builder can be used to fluently chain
 Text.make('hello world');
 ```
 
+### `template`
+
+Creates a new instance of the builder, from a template string. It will trim spaces for each line.
+
+```js
+Text.template(`
+  Hello
+  from
+  template
+  string
+`);
+```
+
 ### `random`
 
 Generates a random alpha-numeric string.
