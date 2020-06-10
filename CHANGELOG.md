@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/innocenzi/text/compare/v1.2.0...v1.3.0) (2020-06-10)
+
+
+### Features
+
+* Add `length` property ([b956945](https://github.com/innocenzi/text/commit/b956945f9fe3f8781833383f55cfb450f053944f))
+* Added `each` method ([8f51191](https://github.com/innocenzi/text/commit/8f51191310099dafbc62a1566329923fd88258fa))
+* Added `map` method ([7c6d1d7](https://github.com/innocenzi/text/commit/7c6d1d7a62d07606a0ed5c0faf626e38f383a7c2))
+
 ## [1.2.0](https://github.com/innocenzi/text/compare/v1.1.0...v1.2.0) (2020-06-10)
 
 
