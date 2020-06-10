@@ -404,6 +404,16 @@ const tests: TextTests = {
       builder: () => Text.make().prependIf(true, 'Hello world'),
     },
   ],
+
+  'maps text': [
+    {
+      expected: 'H E L L O',
+      builder: () =>
+        Text.make('Hello').map((char, index, array) => {
+          return char.upper().appendIf(index < array.length - 1, ' ');
+        }),
+    },
+  ],
 };
 
 describe('Text Builder', () => {

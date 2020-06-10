@@ -544,6 +544,26 @@ export class Text {
   }
 
   /**
+   * Calls a defined callback function on each character of the string, and returns a Text that contains the results.
+   *
+   * @param callback Callback function that should return the new characters.
+   *
+   * @example
+   * Text.make('Hello')
+   * 	.map(char => char.upper())
+   */
+  map(callback: (value: Text, index: number, array: Input[]) => Text): Text {
+    return Text.make(
+      this.toString()
+        .split('')
+        .map((value, index, array) => {
+          return Text.make(callback(Text.make(value), index, array));
+        })
+        .join('')
+    );
+  }
+
+  /**
    * Converts the text to `kebab-case`.
    *
    * @example
