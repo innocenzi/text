@@ -378,7 +378,7 @@ export class Text {
       return this;
     }
 
-    return Text.make(this.toString().split(search)[0]);
+    return new Text(this.toString().split(search)[0]);
   }
 
   /**
@@ -400,7 +400,7 @@ export class Text {
       return this;
     }
 
-    return Text.make(this.toString().substr(0, pos));
+    return new Text(this.toString().substr(0, pos));
   }
 
   /**
@@ -422,7 +422,7 @@ export class Text {
       return this;
     }
 
-    return Text.make(this.toString().substr(pos + search.length));
+    return new Text(this.toString().substr(pos + search.length));
   }
 
   /**
@@ -444,7 +444,7 @@ export class Text {
       return this;
     }
 
-    return Text.make(this.toString().substr(pos + search.length));
+    return new Text(this.toString().substr(pos + search.length));
   }
 
   /**
@@ -527,7 +527,7 @@ export class Text {
    * // hello world
    */
   lower(): Text {
-    return Text.make(this.toLowerCase());
+    return new Text(this.toLowerCase());
   }
 
   /**
@@ -539,7 +539,7 @@ export class Text {
    * // HELLO WORLD
    */
   upper(): Text {
-    return Text.make(this.toUpperCase());
+    return new Text(this.toUpperCase());
   }
 
   /**
@@ -551,7 +551,7 @@ export class Text {
    * // Hello world
    */
   upperFirst(): Text {
-    return Text.make(this.toString().charAt(0).toUpperCase() + this.toString().slice(1));
+    return new Text(this.toString().charAt(0).toUpperCase() + this.toString().slice(1));
   }
 
   /**
@@ -563,7 +563,7 @@ export class Text {
    * // hELLO WORLD
    */
   lowerFirst(): Text {
-    return Text.make(this.toString().charAt(0).toLowerCase() + this.toString().slice(1));
+    return new Text(this.toString().charAt(0).toLowerCase() + this.toString().slice(1));
   }
 
   /**
@@ -593,11 +593,11 @@ export class Text {
    * // HELLO
    */
   map(callback: (value: Text, index: number, array: Input[]) => Text): Text {
-    return Text.make(
+    return new Text(
       this.toString()
         .split('')
         .map((value, index, array) => {
-          return Text.make(callback(Text.make(value), index, array));
+          return new Text(callback(new Text(value), index, array));
         })
         .join('')
     );
@@ -614,7 +614,7 @@ export class Text {
     this.toString()
       .split('')
       .forEach((value, index, array) => {
-        callback(Text.make(value), index, array);
+        callback(new Text(value), index, array);
       });
 
     return this;
@@ -659,7 +659,7 @@ export class Text {
   camelCase(): Text {
     return this.case((result, word, index) => {
       word = word.toLowerCase();
-      return result + (index ? Text.make(word).upperFirst() : word).toString();
+      return result + (index ? new Text(word).upperFirst() : word).toString();
     });
   }
 
@@ -675,7 +675,7 @@ export class Text {
     return this.case((result, word) => {
       word = word.toLowerCase();
 
-      return result + Text.make(word).upperFirst().str();
+      return result + new Text(word).upperFirst().str();
     });
   }
 
@@ -696,7 +696,7 @@ export class Text {
    * // HeLlO WoRlD
    */
   case(reducer: (result: string, word: string, index: number) => string): Text {
-    return Text.make(
+    return new Text(
       this.replace(/['\u2019]/g, '')
         .words()
         .reduce(reducer, '')
@@ -713,28 +713,28 @@ export class Text {
    * Removes whitespace from the left end of a string.
    */
   trimLeft(): Text {
-    return Text.make(this.toString().trimLeft());
+    return new Text(this.toString().trimLeft());
   }
 
   /**
    * Removes whitespace from the right end of a string.
    */
   trimRight(): Text {
-    return Text.make(this.toString().trimRight());
+    return new Text(this.toString().trimRight());
   }
 
   /**
    * Converts all the alphabetic characters in a string to lowercase.
    */
   toLowerCase(): Text {
-    return Text.make(this.toString().toLowerCase());
+    return new Text(this.toString().toLowerCase());
   }
 
   /**
    * Converts all the alphabetic characters in a string to uppercase.
    */
   toUpperCase(): Text {
-    return Text.make(this.toString().toUpperCase());
+    return new Text(this.toString().toUpperCase());
   }
 
   /**
@@ -744,21 +744,21 @@ export class Text {
    * @param length The number of characters to include in the returned substring.
    */
   substr(from: number, length?: number | undefined): Text {
-    return Text.make(this.toString().substr(from, length));
+    return new Text(this.toString().substr(from, length));
   }
 
   /**
    * Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.
    */
   toLocaleLowerCase(locales?: string | string[] | undefined): Text {
-    return Text.make(this.toString().toLocaleLowerCase(locales));
+    return new Text(this.toString().toLocaleLowerCase(locales));
   }
 
   /**
    * Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.
    */
   toLocaleUpperCase(locales?: string | string[] | undefined): Text {
-    return Text.make(this.toString().toLocaleUpperCase(locales));
+    return new Text(this.toString().toLocaleUpperCase(locales));
   }
 
   /**
@@ -767,7 +767,7 @@ export class Text {
    * @param form Applicable values: "NFC", "NFD", "NFKC", or "NFKD", If not specified default is "NFC".
    */
   normalize(form?: 'NFC' | 'NFD' | 'NFKC' | 'NFKD'): Text {
-    return Text.make(this.toString().normalize(form));
+    return new Text(this.toString().normalize(form));
   }
 
   /**
@@ -787,7 +787,7 @@ export class Text {
    * @param end The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end. If this value is not specified, the substring continues to the end of stringObj.
    */
   slice(start?: number | undefined, end?: number | undefined): Text {
-    return Text.make(this.toString().slice(start, end));
+    return new Text(this.toString().slice(start, end));
   }
 
   /**
@@ -796,7 +796,7 @@ export class Text {
    * @param count Number of copies to append.
    */
   repeat(count: number): Text {
-    return Text.make(this.toString().repeat(count));
+    return new Text(this.toString().repeat(count));
   }
 
   /**
@@ -806,7 +806,7 @@ export class Text {
    * @param fillString The string to pad the current string with. If this string is too long, it will be truncated and the left-most part will be applied. The default value for this parameter is " " (U+0020).
    */
   padStart(maxLength: number, fillString?: string | undefined): Text {
-    return Text.make(this.toString().padStart(maxLength, fillString));
+    return new Text(this.toString().padStart(maxLength, fillString));
   }
 
   /**
@@ -816,7 +816,7 @@ export class Text {
    * @param fillString The string to pad the current string with. If this string is too long, it will be truncated and the left-most part will be applied. The default value for this parameter is " " (U+0020).
    */
   padEnd(maxLength: number, fillString?: string | undefined): Text {
-    return Text.make(this.toString().padEnd(maxLength, fillString));
+    return new Text(this.toString().padEnd(maxLength, fillString));
   }
 
   /**
@@ -831,7 +831,7 @@ export class Text {
     },
     replaceValue: string
   ): Text {
-    return Text.make(this.toString().replace(searchValue, replaceValue));
+    return new Text(this.toString().replace(searchValue, replaceValue));
   }
 
   /**
@@ -840,7 +840,7 @@ export class Text {
    * @param position The zero-based index of the desired character.
    */
   charAt(position: number): Text {
-    return Text.make(this.toString().charAt(position));
+    return new Text(this.toString().charAt(position));
   }
 
   /**
