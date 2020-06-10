@@ -1,11 +1,11 @@
 <p align="center">
   <h1 align="center">Text</h1>
   <p align="center">
-    <img alt="Continuous Integration" src="https://github.com/innocenzi/text/workflows/CI/badge.svg"> 
+    <img alt="Continuous Integration" src="https://github.com/supportjs/text/workflows/CI/badge.svg"> 
   &nbsp;
-    <img alt="npm" src="https://img.shields.io/npm/v/@innocenzi/text?color=32c854">
+    <img alt="npm" src="https://img.shields.io/npm/v/@supportjs/text?color=32c854">
   &nbsp;
-    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@innocenzi/text?label=size&color=32c854"> 
+    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@supportjs/text?label=size&color=32c854"> 
   </p>
 <p>
 
@@ -39,8 +39,7 @@ const text = Text.make(`Report for ${projectName}:`)
   .line('Lines: ', lines);
 
 // Or just this
-const text = Text.make()
-  .template(`
+const text = Text.make().template(`
     Report for ${projectName}:
     [${'='.repeat(progress)}${' '.repeat(rest)}] (${percent}%)
 
@@ -57,16 +56,16 @@ Install it via the NPM registry:
 
 ```bash
 # Yarn
-$ yarn add @innocenzi/text
+$ yarn add @supportjs/text
 
 # NPM
-$ npm i @innocenzi/text
+$ npm i @supportjs/text
 ```
 
 The library exposes a single `Text` object, which is the string builder. You can either instantiate it normally, or call the static `make` method.
 
 ```js
-import { Text } from '@innocenzi/text';
+import { Text } from '@supportjs/text';
 
 // This is the same
 const text = Text.make('some optional text');

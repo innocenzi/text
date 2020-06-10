@@ -1,8 +1,23 @@
 {
-  "name": "@innocenzi/text",
+  "name": "@supportjs/text",
   "version": "1.4.0",
   "main": "dist/index.js",
   "license": "MIT",
+  "author": {
+    "name": "Enzo Innocenzi",
+    "email": "enzo@innocenzi.dev",
+    "url": "https://innocenzi.dev"
+  },
+  "keywords": [
+    "support",
+    "text",
+    "string builder",
+    "javascript"
+  ],
+  "homepage": "https://github.com/supportjs/text",
+  "bugs": {
+    "url": "https://github.com/supportjs/text/issues"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "jest": "^26.0.1",
