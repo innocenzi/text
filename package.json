@@ -32,6 +32,7 @@
     "test:watch": "jest --watchAll",
     "watch": "yarn run test:watch",
     "build": "rm -rf dist && tsc",
-    "release": "yarn build && standard-version"
+    "release": "yarn build && standard-version",
+    "publish": "git checkout develop && git push --follow-tags origin master && npm publish --access public && git checkout master && git rebase develop && git push origin master"
   }
 }
