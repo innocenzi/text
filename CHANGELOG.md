@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/supportjs/text/compare/v1.4.0...v1.5.0) (2020-06-10)
+
+
+### Features
+
+* Added static `template` ([afe9f92](https://github.com/supportjs/text/commit/afe9f92b43488d80230c4e7092e1c883d3062493))
+
 ## [1.4.0](https://github.com/supportjs/text/compare/v1.3.0...v1.4.0) (2020-06-10)
 
 ### Features
